@@ -19,4 +19,5 @@ abstract class Configuration
      * Set global variables here.
      */
 
+
 }

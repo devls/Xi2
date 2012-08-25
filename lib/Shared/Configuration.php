@@ -11,4 +11,4 @@ namespace Xi2\Shared;
 /**
  * Do not modify.
  */
-class Configuration extends \Xi2\Configuration\Configuration { }
+class Configuration extends \Xi2\Configuration\Configuration {}
