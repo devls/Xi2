@@ -1,0 +1,3 @@
+[submodule "includes/phpsass"]
+	path = includes/phpsass
+	url = git://github.com/richthegeek/phpsass.git
