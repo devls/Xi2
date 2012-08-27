@@ -43,7 +43,8 @@ Technologies Used
 Documentation
 ====
 
-Hold your horses! None of this code works. Have a look at Xi Framework, if you're interested, but be warned I hate a lot of the code in that now.
+Hold your horses! This project isn't yet ready to be used. 
+Have a look at the original Xi Framework, if you're interested, but be warned; I hate a lot of the code in that now.
 
 Todo
 ====
