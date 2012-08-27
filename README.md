@@ -10,9 +10,9 @@ Features
 ====
 
 * API Driven
-** Achieved through a Shared Abstraction Layer which acts as a layer between the output layer and the model layer
+ * Achieved through a Shared Abstraction Layer which acts as a layer between the output layer and the model layer
 * Supportive of Zend_Db/PDO/RedBeanPHP
-** Multi-database/Single-database support
+ * Multi-database/Single-database support
 * CouchDB Support
 * MongoDB Support
 * Multi-application support (Applications which share users)
@@ -20,8 +20,8 @@ Features
 * CLI Support
 * Profiling (XHProf)
 * PHP Development tools to aid:-
-** DB Updates/Rollbacks
-** Database Maintenance
+ * DB Updates/Rollbacks
+ * Database Maintenance
 
 Todo
 ====
