@@ -1,10 +1,12 @@
 Xi2
 ===
 
-Xi2 is the 'spritual' successor Xi Framework (https://bitbucket.org/cbass/xi-framework).
+Xi2 is the 'spritual' successor of the Xi Framework (https://bitbucket.org/cbass/xi-framework).
 
-The Xi Framework is designed to be an Abstraction-oriented Framework built around object-instances
+The Xi Framework AND Xi2 is designed to be an Abstraction-oriented Framework built around object-instances
 to control the lifecycle of a HTTP Request.
+
+Static '''methods''' other than use for factories are frowned upon.
 
 Features
 ====
