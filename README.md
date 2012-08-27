@@ -3,10 +3,10 @@ Xi2
 
 Xi2 is the 'spritual' successor of the Xi Framework (https://bitbucket.org/cbass/xi-framework).
 
-The Xi Framework AND Xi2 is designed to be an Abstraction-oriented Framework built around object-instances
+Xi Framework AND Xi2 are designed to be abstraction-oriented Frameworks built around object-instances
 to control the lifecycle of a HTTP Request.
 
-Static '''methods''' other than use for factories are frowned upon.
+Static methods other than use for factories are frowned upon.
 
 Features
 ====
@@ -39,6 +39,11 @@ Technologies Used
 * MongoDB
 * PHPSass
 * ...
+
+Documentation
+====
+
+Hold your horses! None of this code works. Have a look at Xi Framework, if you're interested, but be warned I hate a lot of the code in that now.
 
 Todo
 ====
