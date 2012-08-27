@@ -18,10 +18,25 @@ Features
 * Multi-application support (Applications which share users)
 * APC
 * CLI Support
-* Profiling (XHProf)
+* Profiling (XHProf support) as well as;
+ * Page Load Times
+ * Error Reporting
+ * 
 * PHP Development tools to aid:-
  * DB Updates/Rollbacks
  * Database Maintenance
+
+Technologies Used
+====
+* PHP 5.4 Only
+* APC
+* XHProf
+* Zend_Db
+* RedBeanPHP
+* CouchDB
+* MongoDB
+* PHPSass
+* ...
 
 Todo
 ====
