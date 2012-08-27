@@ -6,7 +6,8 @@ Xi2 is the 'spritual' successor Xi Framework (https://bitbucket.org/cbass/xi-fra
 The Xi Framework is designed to be an Abstraction-oriented Framework built around object-instances
 to control the lifecycle of a HTTP Request.
 
-==Features==
+Features
+====
 
 * API Driven
 ** Achieved through a Shared Abstraction Layer which acts as a layer between the output layer and the model layer
@@ -22,6 +23,7 @@ to control the lifecycle of a HTTP Request.
 ** DB Updates/Rollbacks
 ** Database Maintenance
 
-==Todo==
+Todo
+====
 
 * All of the above
