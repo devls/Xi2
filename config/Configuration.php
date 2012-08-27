@@ -6,7 +6,7 @@
  * Date: 25/08/12
  * Time: 16:47
  */
-namespace Xi2\Configuration;
+namespace Xi2;
 
 /**
  * Do not extend from this class.
