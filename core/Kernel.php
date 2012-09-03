@@ -8,9 +8,9 @@
  */
 namespace Xi2\Core;
 
-class Kernel implements \Xi2\Core\Definitions\Kernel
+class Kernel implements Definitions\Kernel
 {
-    public function __construct(\Xi2\Core\UriHandler $overrideUri = null)
+    public function __construct( Definitions\UriHandler $overrideUri = null)
     {
         // TODO: Implement __construct() method.
     }

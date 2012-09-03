@@ -11,7 +11,7 @@ namespace Xi2\Core\Definitions;
 interface Kernel
 {
 
-    public function __construct( \Xi2\Core\UriHandler $overrideUri=null );
+    public function __construct( UriHandler $overrideUri=null );
 
     public static function get();
 

@@ -8,7 +8,7 @@
  */
 namespace Xi2\Core;
 
-class UriHandler
+class UriHandler implements Definitions\UriHandler
 {
 
 }

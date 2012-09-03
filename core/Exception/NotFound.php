@@ -8,7 +8,7 @@
  */
 namespace Xi2\Core\Exception;
 
-class NotFound extends \Exception
+class NotFound extends Exception
 {
     private $path;
 

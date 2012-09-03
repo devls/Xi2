@@ -8,7 +8,7 @@
  */
 namespace Xi2\Core;
 
-class ServiceManager implements \Xi2\Core\Definitions\ServiceManager
+class ServiceManager implements Definitions\ServiceManager
 {
 
 }

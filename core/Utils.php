@@ -11,6 +11,9 @@ namespace Xi2\Core;
 /**
  * Utility Class Container
  */
+
+namespace Xi2;
+
 class Utils
 {
 
@@ -21,12 +24,12 @@ class Utils
      * @param $alt
      * @param callable $valFormatter
      * @return mixed
-     * @throws Exception
+     * @throws Core\Exception\General
      */
     private static function e( \Closure $rule, &$val, $alt, \Closure $valFormatter=null )
     {
         if( !is_callable( $rule ) )
-            throw new \Xi2\Core\Exception( "Xi2\Core\Utils::e RULE is not callable!" );
+            throw new Core\Exception\General( "Xi2\Core\Utils::e RULE is not callable!" );
 
         if( $rule( $val ) ) {
             if( is_callable( $valFormatter ) )
@@ -45,7 +48,7 @@ class Utils
      * @param Closure $formatter
      * @return mixed
      */
-    public static function eisset( &$val, $alt=null, Closure $formatter=null )
+    public static function eisset( &$val, $alt=null, \Closure $formatter=null )
     {
         return self::e( function( &$val ) {
             return $val !== null;
