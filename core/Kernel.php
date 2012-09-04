@@ -10,14 +10,23 @@ namespace Xi2\Core;
 
 class Kernel implements Definitions\Kernel
 {
+
+    private static $mySelf;
+
     public function __construct( Definitions\UriHandler $overrideUri = null)
     {
-        // TODO: Implement __construct() method.
+
+        if( !isset( self::$mySelf ) ) {
+            self::$mySelf = $this;
+        } else {
+            throw new Exception\General( "Cannot boot a this Kernel more than once." );
+        }
+
     }
 
     public static function get()
     {
-        // TODO: Implement get() method.
+        return self::$mySelf;
     }
 
     public function boot()

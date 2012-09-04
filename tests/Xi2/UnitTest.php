@@ -7,6 +7,8 @@
  * Time: 21:48
  */
 use Xi2\Core\Test\Base as TestCase;
+use Xi2\Core\Kernel as Kernel;
+use Xi2\Core\Definitions\Kernel as KernelDefinition;
 
 class UnitTest extends TestCase
 {
@@ -16,7 +18,7 @@ class UnitTest extends TestCase
      */
     public function testUnitTesting () {
 
-        $this->assertTrue( true );
+        $this->assertTrue( Kernel::get() instanceof KernelDefinition );
 
     }
 
