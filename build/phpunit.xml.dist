@@ -1,12 +1,12 @@
 <phpunit bootstrap="../phpunit/bootstrap.php" colors="true">
     <testsuites>
         <testsuite name="Xi2 Framework">
-            <directory suffix=".php">../tests/Xi2</directory>
+            <directory suffix=".php">../tests/Xi2/</directory>
         </testsuite>
     </testsuites>
     <testsuites>
         <testsuite name="User">
-            <directory suffix=".php">../tests/User</directory>
+            <directory suffix=".php">../tests/User/</directory>
         </testsuite>
     </testsuites>
 </phpunit>
