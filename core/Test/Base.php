@@ -8,7 +8,7 @@
  */
 namespace Xi2\Core\Test;
 
-class Base extends \PHPUnit_Framework_TestCase
+abstract class Base extends \PHPUnit_Framework_TestCase
 {
 
 }
