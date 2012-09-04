@@ -1,0 +1,15 @@
+<phpunit>
+    <testsuites>
+        <testsuite name="Xi2 Framework">
+            <directory>../tests/Xi2</directory>
+        </testsuite>
+    </testsuites>
+    <testsuites>
+        <testsuite name="User">
+            <directory>../tests/User</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <includePath>../travis</includePath>
+    </php>
+</phpunit>

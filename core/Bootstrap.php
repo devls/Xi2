@@ -19,7 +19,7 @@ class Bootstrap
      *
      * @static
      */
-    public static function go()
+    public static function go( $noBoot=false )
     {
         error_reporting( -1 );
         gc_enable();
@@ -55,7 +55,13 @@ class Bootstrap
             }
         );
 
-        self::$kernel = new Kernel();
+        if( $noBoot ) {
+
+            //Instantiate but do not boot the Kernel. This will cause auto-loaders to be loaded but nothing else.
+            self::$kernel = new Kernel();
+            return;
+        }
+
         self::boot(); //Boot will now execute this runcycle.
 
         self::end(); //When everything is finished, wind it all down.
