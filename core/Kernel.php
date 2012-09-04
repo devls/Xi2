@@ -13,6 +13,12 @@ class Kernel implements Definitions\Kernel
 
     private static $mySelf;
 
+    /**
+     * Constructs this \Xi2\Core\Kernel.
+     *
+     * @param Definitions\UriHandler $overrideUri
+     * @throws Exception\General
+     */
     public function __construct( Definitions\UriHandler $overrideUri = null)
     {
 
@@ -24,6 +30,12 @@ class Kernel implements Definitions\Kernel
 
     }
 
+    /**
+     * Gets the Kernel instance.
+     *
+     * @static
+     * @return Kernel
+     */
     public static function get()
     {
         return self::$mySelf;
