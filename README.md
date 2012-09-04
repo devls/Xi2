@@ -1,4 +1,4 @@
-Xi2
+Xi2 [![build status](https://secure.travis-ci.org/devls/Xi2.png)](https://secure.travis-ci.org/#!/devls/Xi2)
 ===
 
 Xi2 is the 'spritual' successor of the Xi Framework (https://bitbucket.org/cbass/xi-framework).
