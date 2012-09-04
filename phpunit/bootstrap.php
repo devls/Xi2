@@ -7,4 +7,4 @@
  * Time: 14:20
  */
 include __DIR__ . '/../core/Bootstrap.php';
-\Xi2\Core\Bootstrap::go();
+\Xi2\Core\Bootstrap::go( true );

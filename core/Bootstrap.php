@@ -54,11 +54,10 @@ class Bootstrap
 
             }
         );
-
+        self::$kernel = new Kernel();
         if( $noBoot ) {
 
             //Instantiate but do not boot the Kernel. This will cause auto-loaders to be loaded but nothing else.
-            self::$kernel = new Kernel();
             return;
         }
 
