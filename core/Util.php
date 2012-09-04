@@ -11,10 +11,12 @@ namespace Xi2; //This is a special class that exists in the Xi2 namespace.
 /**
  * Utility Class Container
  */
-class Utils
+class Util
 {
 
     /**
+     * Provides a reusable backend for the Util
+     *
      * @static
      * @param callable $rule
      * @param $val

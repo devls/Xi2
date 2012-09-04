@@ -111,7 +111,7 @@ class Bootstrap
 
             self::$kernel->boot();
 
-        } catch ( \Xi2\Core\Exception $e ) {
+        } catch ( Exception\Exception $e ) {
 
             $uri = new UriHandler( "Xi2://error/" );
 
