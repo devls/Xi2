@@ -24,7 +24,6 @@ class Bootstrap
         error_reporting( -1 );
         gc_enable();
 
-
         spl_autoload_register (
             function( $class ) {
 
