@@ -12,6 +12,8 @@ namespace Xi2\Core;
  * Parses incoming Uri's in the following format described below.
  *
  * //<domain>/[<junk>/]+<api|view|*>/<module>/<group|0>/<view>/<method>[/!/[<params>/]+}
+ *
+ * @author Craig Bass <craig@devls.co.uk>
  */
 class UriHandler implements Definitions\UriHandler
 {
@@ -32,7 +34,6 @@ class UriHandler implements Definitions\UriHandler
 
     /**
      * Constructs this UriHandler. Actually does some initial parsing.
-     *
      *
      */
     public function __construct(  )
@@ -74,7 +75,6 @@ class UriHandler implements Definitions\UriHandler
             $index++;
 
         }
-
 
         $this->parts = $parts;
 
@@ -136,6 +136,8 @@ class UriHandler implements Definitions\UriHandler
 
 
     /**
+     * Gets the domain from the Uri
+     *
      * @return string
      */
     public function getDomain()
@@ -144,6 +146,8 @@ class UriHandler implements Definitions\UriHandler
     }
 
     /**
+     * Gets the group from the Uri
+     *
      * @return string
      */
     public function getGroup()
@@ -151,7 +155,9 @@ class UriHandler implements Definitions\UriHandler
         return $this->group;
     }
 
-    /*
+    /**
+     * Gets the mode from the Uri
+     *
      * @return string
      */
     public function getMode()
@@ -159,7 +165,9 @@ class UriHandler implements Definitions\UriHandler
         return $this->mode;
     }
 
-    /*
+    /**
+     * Gets the module from the Uri
+     *
      * @return string
      */
     public function getModule()
@@ -168,6 +176,8 @@ class UriHandler implements Definitions\UriHandler
     }
 
     /**
+     * Gets the params from the Uri
+     *
      * @return array
      */
     public function getParams()
@@ -176,6 +186,8 @@ class UriHandler implements Definitions\UriHandler
     }
 
     /**
+     * Gets the class from the Uri
+     *
      * @return string
      */
     public function getClass()
@@ -184,6 +196,8 @@ class UriHandler implements Definitions\UriHandler
     }
 
     /**
+     * Gets the Method from the Uri
+     *
      * @return string
      */
     public function getMethod()
