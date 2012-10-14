@@ -106,6 +106,10 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
                 $this->uriHandler->getMode() . '\\' .
                 $this->uriHandler->getClass();
 
+            if ( !class_exists( $className ) ) {
+                throw new Exception\NotFound();
+            }
+
             $obj = new $className();
 
             call_user_func_array(
@@ -118,7 +122,8 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
 
         } catch ( Exception\NotFound $e ) {
 
-
+            //TODO: Replace this logic
+            echo "Not Found";
 
         } catch ( \Exception $e ) {
 

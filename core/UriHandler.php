@@ -11,7 +11,7 @@ namespace Xi2\Core;
 /**
  * Parses incoming Uri's in the following format described below.
  *
- * //<domain>/<api|view>/<module>/<group|0>/<view>/<method>/[params/]+
+ * //<domain>/[<junk>/]+<api|view|*>/<module>/<group|0>/<view>/<method>[/!/[<params>/]+}
  */
 class UriHandler implements Definitions\UriHandler
 {
@@ -31,19 +31,57 @@ class UriHandler implements Definitions\UriHandler
 
 
     /**
-     * Constructs this UriHandler
+     * Constructs this UriHandler. Actually does some initial parsing.
+     *
+     *
      */
     public function __construct(  )
     {
 
-        $request = $_SERVER['REQUEST_URI'];
+        if( !isset( $_SERVER['REQUEST_URI'] ) ) {
+            return;
+        }
 
-        $this->parts = explode( '/', $request );
+        $request = explode( '!', $_SERVER['REQUEST_URI'] );
+
+        $request = array_map(
+            function( $part ) {
+                return trim( $part, '/' );
+            },
+            $request
+        );
+
+        $parts = array();
+
+        $index = 0;
+        foreach( $request as $part ) {
+
+            $part = explode( '/', $part );
+
+            if( $index ) {
+                $parts = array_merge( $parts, $part );
+                break;
+            }
+
+            $count = count( $part ) - 1;
+
+            for( $i = $count - 4; $i <= $count; $i++ ) {
+                if( $i < 0 ) {
+                    continue;
+                }
+                $parts[] = $part[ $i ];
+            }
+            $index++;
+
+        }
+
+
+        $this->parts = $parts;
 
     }
 
     /**
-     * Begins parsing
+     * Finishes parsing and checks if valid.
      *
      * @throws Exception\NotFound
      */

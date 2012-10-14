@@ -28,7 +28,6 @@ class Bootstrap
     {
 
         $path = $path.'.php';
-        echo $path;
         if( file_exists( $path ) ) {
 
             include $path;
