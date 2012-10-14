@@ -27,6 +27,9 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
     /* @var array */
     private $namespaces;
 
+    /* @var string */
+    private $output;
+
     /**
      * Constructs this \Xi2\Core\Kernel.
      *
@@ -106,7 +109,7 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
     }
 
     /**
-     *
+     * Does the calling of the output class
      */
     private function callView()
     {
@@ -144,7 +147,6 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
                 throw new Exception\NotFound();
             }
 
-            ob_start();
             $template = call_user_func_array(
                 array(
                     $obj,
@@ -158,8 +160,12 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
                 echo "Nefarious Output Detected!";
             }
 
+            ob_start();
+
             if( $template instanceof Definitions\Template ) {
+
                 $template->render();
+
             } else {
                 throw new Exception\General();
             }
@@ -175,12 +181,25 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
 
         }
 
-        ob_end_flush();
+        $this->output = ob_get_clean();
+
+        ob_end_clean();
     }
 
+    /**
+     * Halts the Kernel
+     *
+     * @param bool $noOutput
+     */
     public function halt( $noOutput = false )
     {
-        // TODO: Implement halt() method.
+
+        if( !$noOutput ) {
+
+            echo $this->output;
+
+        }
+
     }
 
     public function flush()
