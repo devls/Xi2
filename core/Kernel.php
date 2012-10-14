@@ -32,6 +32,8 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
      *
      * @param Definitions\UriHandler $overrideUri
      * @throws Exception\General
+     * @param array $customPaths
+     * @param array $namespaces
      */
     public function __construct( Definitions\UriHandler $overrideUri = null,
                                  array $customPaths = array(),
@@ -108,6 +110,8 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
      */
     private function callView()
     {
+        ob_start();
+
         try {
 
             $this->uriHandler->parse();
@@ -140,13 +144,25 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
                 throw new Exception\NotFound();
             }
 
-            call_user_func_array(
+            ob_start();
+            $template = call_user_func_array(
                 array(
                     $obj,
                     $method
                 ),
                 $this->uriHandler->getParams()
             );
+            $badOutput = ob_get_clean(); //Throw away any output
+
+            if( Bootstrap::supports( 'debug' ) && !empty( $badOutput ) ) {
+                echo "Nefarious Output Detected!";
+            }
+
+            if( $template instanceof Definitions\Template ) {
+                $template->render();
+            } else {
+                throw new Exception\General();
+            }
 
         } catch ( Exception\NotFound $e ) {
 
@@ -156,6 +172,8 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
         } catch ( \Exception $e ) {
 
         }
+
+        ob_end_flush();
     }
 
     public function halt( $noOutput = false )

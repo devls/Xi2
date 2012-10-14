@@ -6,7 +6,14 @@
  * Date: 27/08/12
  * Time: 09:59
  */
-abstract class Template
+use Xi2\Core\Definitions\Template as Definition;
+
+/**
+ * The template standard code
+ */
+abstract class Template implements Definition
 {
+
+
 
 }
