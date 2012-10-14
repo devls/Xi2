@@ -24,13 +24,18 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
     /* @var array */
     private $paths;
 
+    /* @var array */
+    private $namespaces;
+
     /**
      * Constructs this \Xi2\Core\Kernel.
      *
      * @param Definitions\UriHandler $overrideUri
      * @throws Exception\General
      */
-    public function __construct( Definitions\UriHandler $overrideUri = null, array $customPaths = array() )
+    public function __construct( Definitions\UriHandler $overrideUri = null,
+                                 array $customPaths = array(),
+                                 array $namespaces = array() )
     {
 
         if( !isset( self::$mySelf ) ) {
@@ -45,6 +50,13 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
             $customPaths,
             array(
                 __DIR__.'/../lib/'
+            )
+        );
+
+        $this->namespaces = array_merge(
+            $namespaces,
+            array(
+                'Xi2'
             )
         );
 
@@ -73,7 +85,6 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
                     $check = Bootstrap::doFileInclude(
                         $path .
                         implode( '/', $class )
-                        . '.php'
                     );
 
                     if( $check ) {
@@ -106,16 +117,33 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
                 $this->uriHandler->getMode() . '\\' .
                 $this->uriHandler->getClass();
 
-            if ( !class_exists( $className ) ) {
+
+            $found = false;
+            foreach( $this->namespaces as $space ) {
+                if ( class_exists( $space.$className ) ) {
+                    $found = true;
+                    $className = $space.$className;
+                    break;
+                }
+            }
+
+            if( !$found ) {
                 throw new Exception\NotFound();
             }
 
+
             $obj = new $className();
+
+            $method = $this->uriHandler->getMethod();
+
+            if( !method_exists( $obj, $method ) ) {
+                throw new Exception\NotFound();
+            }
 
             call_user_func_array(
                 array(
                     $obj,
-                    $this->uriHandler->getMethod()
+                    $method
                 ),
                 $this->uriHandler->getParams()
             );

@@ -70,7 +70,7 @@ class UriHandler implements Definitions\UriHandler
                 if( $i < 0 ) {
                     continue;
                 }
-                $parts[] = $part[ $i ];
+                $parts[] = ucfirst( $part[ $i ] );
             }
             $index++;
 
@@ -93,6 +93,8 @@ class UriHandler implements Definitions\UriHandler
         if( count( $this->parts ) < 5 ) {
             throw new Exception\NotFound( );
         }
+
+
 
         /*
          * Extract the mode
