@@ -73,7 +73,7 @@ class Bootstrap
 
         self::boot(); //Boot will now execute this runcycle.
 
-        self::end(); //When everything is finished, wind it all down.
+        self::stop(); //When everything is finished, wind it all down.
     }
 
     /**
@@ -81,7 +81,7 @@ class Bootstrap
      *
      * @static
      */
-    public static function end()
+    public static function stop()
     {
         self::$kernel->halt();
 
@@ -148,6 +148,7 @@ class Bootstrap
             self::reboot( $kernel );
 
         }
+
     }
 
     /**

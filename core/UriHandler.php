@@ -36,8 +36,10 @@ class UriHandler implements Definitions\UriHandler
      * Constructs this UriHandler. Actually does some initial parsing.
      *
      */
-    public function __construct(  )
+    public function __construct( $requestUri )
     {
+
+
 
         if( !isset( $_SERVER['REQUEST_URI'] ) ) {
             return;

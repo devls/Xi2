@@ -171,6 +171,8 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
 
         } catch ( \Exception $e ) {
 
+            echo "Something went wrong!";
+
         }
 
         ob_end_flush();
