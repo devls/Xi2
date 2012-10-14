@@ -13,8 +13,6 @@ interface Kernel
 
     public function __construct( UriHandler $overrideUri=null );
 
-    public static function get();
-
     public function boot();
 
     public function halt( $noOutput=false );

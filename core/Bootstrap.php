@@ -11,7 +11,10 @@ use \Xi2\Core\Libraries\Utils\Generic as Generic;
  */
 class Bootstrap
 {
+    /* @var \Xi2\Core\Definitions\Kernel */
     private static $kernel;
+
+    /* @var array */
     private static $supports = array();
 
     /**
