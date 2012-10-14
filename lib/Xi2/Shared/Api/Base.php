@@ -9,8 +9,12 @@
 namespace Xi2\Shared\Api;
 
 use Xi2\Shared\Output\Definition;
+use Xi2\Shared\Output\Base as OutputBase;
 
-class Base implements Definition
+/**
+ * Api Base
+ */
+class Base extends OutputBase implements Definition
 {
 
 }

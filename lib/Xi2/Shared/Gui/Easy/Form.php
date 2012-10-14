@@ -8,7 +8,12 @@
  */
 namespace Xi2\Shared\Gui\Easy;
 
-class Form extends \Xi2\Shared\Gui\Builder
+use \Xi2\Shared\Gui\Builder;
+
+/**
+ * EasyForm
+ */
+class Form extends Builder
 {
 
 }
