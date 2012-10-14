@@ -9,8 +9,12 @@
 namespace Xi2\Shared\View;
 
 use Xi2\Shared\Output\Definition;
+use Xi2\Shared\Output\Base as OutputBase;
 
-class Base implements Definition
+/**
+ * View base
+ */
+class Base extends OutputBase implements Definition
 {
 
 }

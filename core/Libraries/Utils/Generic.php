@@ -7,11 +7,13 @@
  * Time: 11:41
  */
 
-namespace Xi2; //This is a special class that exists in the Xi2 namespace.
+namespace Xi2\Core\Libraries\Utils; //This is a special class that exists in the Xi2 namespace.
+use \Xi2\Core\Exception\General as GeneralException;
+
 /**
  * Utility Class Container
  */
-class Util
+class Generic
 {
 
     /**
@@ -22,13 +24,13 @@ class Util
      * @param $val
      * @param $alt
      * @param callable $valFormatter
+     * @throws \Xi2\Core\Exception\General
      * @return mixed
-     * @throws Core\Exception\General
      */
     private static function e( \Closure $rule, &$val, $alt, \Closure $valFormatter=null )
     {
         if( !is_callable( $rule ) )
-            throw new Core\Exception\General( "Xi2\Core\Utils::e RULE is not callable!" );
+            throw new GeneralException( __NAMESPACE__.__CLASS__.__METHOD__." RULE is not callable!" );
 
         if( $rule( $val ) ) {
             if( is_callable( $valFormatter ) )

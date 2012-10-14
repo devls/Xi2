@@ -1,7 +1,7 @@
 <?php
 
 namespace Xi2\Core;
-
+use \Xi2\Core\Libraries\Utils\Generic as Generic;
 /**
  * Xi2.
  * License: GPLv2/BSD
@@ -15,8 +15,33 @@ class Bootstrap
     private static $supports = array();
 
     /**
+     * Includes a file.
+     *
+     * @static
+     * @param $path
+     * @return bool
+     */
+    public static function doFileInclude( $path )
+    {
+
+        $path = $path.'.php';
+        echo $path;
+        if( file_exists( $path ) ) {
+
+            include $path;
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+    }
+
+    /**
      * Starts Xi2. Sets up Core class autoloading.
      *
+     * @param bool $noBoot
      * @static
      */
     public static function go( $noBoot=false )
@@ -27,28 +52,12 @@ class Bootstrap
         spl_autoload_register (
             function( $class ) {
 
-                $doInclude = function( $path ) {
-                    $path = $path.'.php';
-                    echo $path;
-                    if( file_exists( $path ) ) {
-
-                        include $path;
-                        return true;
-
-                    } else {
-
-                        return false;
-
-                    }
-
-                };
-
                 $class = explode( '\\', $class );
 
                 if( count($class) > 2 && $class[0] == 'Xi2' && $class[1] == 'Core' )
                 {
                     array_shift( $class ) && array_shift( $class );
-                    $doInclude( __DIR__ . '/' . implode( '/', $class ) );
+                    Bootstrap::doFileInclude( __DIR__ . '/' . implode( '/', $class ) );
                 }
 
             }
@@ -87,19 +96,22 @@ class Bootstrap
      */
     private static function fatalErrorProtection()
     {
-
+        //Generic error handler logic
         $handler = function( $code, $message, $file, $line ) {
             echo "Code: {$code}, $message in $file on line $line";
         };
 
+        //Use it for errors
         set_error_handler( $handler );
 
-        register_shutdown_function( function() use ( $handler ) {
-            $error = error_get_last();
-
-            $handler( $error['type'], $error['message'], $error['file'], $error['line'] );
-
-        } );
+        register_shutdown_function(
+            function() use ( $handler ) {
+                $error = error_get_last();
+                if( $error !== null ) {
+                    $handler( $error['type'], $error['message'], $error['file'], $error['line'] );
+                }
+            }
+        );
 
     }
 
@@ -169,7 +181,7 @@ class Bootstrap
             self::$supports[ $handle ] = (bool) $value;
         }
 
-        return Utils::eisset( self::$supports[ $handle ] );
+        return Generic::eIsSet( self::$supports[ $handle ] );
 
     }
 }
