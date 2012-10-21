@@ -19,8 +19,29 @@ interface Kernel
 
     public function flush();
 
-    public function service( $handle, $instance );
+    /**
+     * Gets a Service from the Kernel
+     *
+     * @param $handle
+     * @return Service|null
+     */
+    public function getService( $handle );
 
-    public function unregisterService( $handle, $instance );
+    /**
+     * Registers a service with the Kernel.
+     *
+     * @param $handle
+     * @param Service $instance
+     * @return Service
+     */
+    public function registerService( $handle, Service $instance );
+
+    /**
+     * Unregisters a service with the Kernel.
+     *
+     * @param $handle
+     * @return bool
+     */
+    public function unregisterService( $handle );
 
 }

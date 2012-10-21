@@ -18,7 +18,6 @@ namespace Xi2\Core;
 class UriHandler implements Definitions\UriHandler
 {
 
-
     private $domain;
     private $mode;
     private $module;
@@ -31,21 +30,22 @@ class UriHandler implements Definitions\UriHandler
 
     private $parts;
 
-
     /**
      * Constructs this UriHandler. Actually does some initial parsing.
      *
      */
-    public function __construct( $requestUri )
+    public function __construct( $requestUri = null )
     {
 
+        $noRequestUri = !isset( $_SERVER['REQUEST_URI'] );
 
-
-        if( !isset( $_SERVER['REQUEST_URI'] ) ) {
-            return;
+        if( !$noRequestUri && $requestUri === null ) {
+            $requestUri = $_SERVER['REQUEST_URI'];
+        } else if ( $noRequestUri && $requestUri === null ) {
+            throw new \Xi2\Core\Exception\General;
         }
 
-        $request = explode( '!', $_SERVER['REQUEST_URI'] );
+        $request = explode( '!', $requestUri );
 
         $request = array_map(
             function( $part ) {
@@ -95,8 +95,6 @@ class UriHandler implements Definitions\UriHandler
         if( count( $this->parts ) < 5 ) {
             throw new Exception\NotFound( );
         }
-
-
 
         /*
          * Extract the mode

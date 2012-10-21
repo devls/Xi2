@@ -9,9 +9,9 @@
 namespace Xi2\Core\Definitions;
 
 /**
- * Defines templates that can be used by the Kernel.
+ * Defines renderable objects that can be used by the Kernel.
  */
-interface Template
+interface Renderable
 {
 
     /**

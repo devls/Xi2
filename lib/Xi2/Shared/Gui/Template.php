@@ -6,14 +6,26 @@
  * Date: 27/08/12
  * Time: 09:59
  */
-use Xi2\Core\Definitions\Template as Definition;
+namespace Xi2\Shared\Gui;
+use Xi2\Core\Definitions\Renderable;
 
 /**
  * The template standard code
  */
-abstract class Template implements Definition
+abstract class Template implements Renderable
 {
 
+    /**
+     *
+     *
+     * @param $templateFile
+     * @return Pseudo\Template
+     */
+    public static function getPseudo( $templateFile )
+    {
 
+
+        return new Pseudo\Template();
+    }
 
 }

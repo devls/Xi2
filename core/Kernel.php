@@ -18,9 +18,6 @@ use \Xi2\Core\Libraries\Utils\Generic;
 class Kernel extends KernelAbstract implements Definitions\Kernel
 {
 
-    /* @var Definitions\UriHandler */
-    private $uriHandler;
-
     /* @var array */
     private $paths;
 
@@ -29,6 +26,13 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
 
     /* @var string */
     private $output;
+
+    /* @var Definitions\ServiceManager */
+    private $serviceManager;
+
+    /* @var Definitions\UriHandler */
+    private $uriHandler;
+
 
     /**
      * Constructs this \Xi2\Core\Kernel.
@@ -64,6 +68,8 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
                 'Xi2'
             )
         );
+
+        $this->serviceManager = new ServiceManager();
 
     }
 
@@ -162,7 +168,7 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
 
             ob_start();
 
-            if( $template instanceof Definitions\Template ) {
+            if( $template instanceof Definitions\Renderable ) {
 
                 $template->render();
 
@@ -207,14 +213,38 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
         // TODO: Implement flush() method.
     }
 
-    public function service($handle, $instance)
+    /**
+     * Gets a Service from the Kernel
+     *
+     * @param $handle
+     * @return Definitions\Service|null
+     */
+    public function getService( $handle )
     {
-        // TODO: Implement service() method.
+        return $this->serviceManager->get( $handle );
     }
 
-    public function unregisterService($handle, $instance)
+    /**
+     * Registers a service with the Kernel.
+     *
+     * @param $handle
+     * @param Definitions\Service $instance
+     * @return Definitions\Service
+     */
+    public function registerService( $handle, Definitions\Service $instance )
     {
-        // TODO: Implement unregisterService() method.
+        return $this->serviceManager->register( $handle, $instance );
+    }
+
+    /**
+     * Unregisters a service with the Kernel.
+     *
+     * @param $handle
+     * @return bool
+     */
+    public function unregisterService( $handle )
+    {
+        return $this->serviceManager->unregister( $handle );
     }
 
 
