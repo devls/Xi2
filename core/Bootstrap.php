@@ -50,9 +50,10 @@ namespace Xi2\Core {
          * Starts Xi2. Sets up Core class autoloading.
          *
          * @param bool $noBoot
+         * @param \Xi2\Core\Definitions\Kernel $kernel
          * @static
          */
-        public static function go( $noBoot=false )
+        public static function go( $noBoot = false, \Xi2\Core\Definitions\Kernel $kernel = null )
         {
             error_reporting( -1 );
             gc_enable();
@@ -70,11 +71,12 @@ namespace Xi2\Core {
 
                 }
             );
-            self::$kernel = new Kernel();
-            if( $noBoot ) {
 
-                //Instantiate but do not boot the Kernel. This will cause auto-loaders to be loaded but nothing else.
+            if( $noBoot ) {
+                //This will cause auto-loaders to be loaded but nothing else.
                 return;
+            } else {
+                self::$kernel = $kernel !== null ? $kernel : new Kernel();
             }
 
             self::boot(); //Boot will now execute this runcycle.

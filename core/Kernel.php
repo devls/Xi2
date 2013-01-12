@@ -79,19 +79,17 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
     public function boot()
     {
         //An autoloader with greater powers.
-
-        $kernel = $this;
         spl_autoload_register(
-            function( $class ) use ( $kernel ) {
+            function( $class ) {
 
                 $class = explode( '\\', trim( $class, '\\' ) );
 
-                if( count( $class ) < 4 ) {
+                if( count( $class ) < 3 ) {
                     return false;
                 }
 
                 $found = false;
-                foreach( $kernel->paths as $path ) {
+                foreach( $this->paths as $path ) {
 
                     $check = Bootstrap::doFileInclude(
                         $path .
@@ -133,6 +131,11 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
 
             $found = false;
             foreach( $this->namespaces as $space ) {
+
+                if( !empty( $space ) ) {
+                    $space = '\\' . $space;
+                }
+
                 if ( class_exists( $space.$className ) ) {
                     $found = true;
                     $className = $space.$className;
@@ -168,13 +171,17 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
 
             ob_start();
 
-            if( $template instanceof Definitions\Renderable ) {
+            if( $template instanceof \Xi2\Core\Definitions\Renderable ) {
 
                 $template->render();
 
             } else {
                 throw new Exception\General();
             }
+
+        } catch ( Exception\Redirect $e ) {
+
+            //Nothing bad happened here.
 
         } catch ( Exception\NotFound $e ) {
 
@@ -183,7 +190,7 @@ class Kernel extends KernelAbstract implements Definitions\Kernel
 
         } catch ( \Exception $e ) {
 
-            echo "Something went wrong!";
+            echo "Something went wrong! " . var_export( $e, true );
 
         }
 
