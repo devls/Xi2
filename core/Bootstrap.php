@@ -72,11 +72,11 @@ namespace Xi2\Core {
                 }
             );
 
+            self::$kernel = $kernel !== null ? $kernel : new Kernel();
+
             if( $noBoot ) {
                 //This will cause the bootstrap auto-loader to be loaded but nothing else.
                 return;
-            } else {
-                self::$kernel = $kernel !== null ? $kernel : new Kernel();
             }
 
             self::boot(); //Boot will now execute this runcycle.
