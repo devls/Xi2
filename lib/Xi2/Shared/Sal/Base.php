@@ -8,7 +8,7 @@
  */
 namespace Xi2\Shared\Sal;
 
-class Base
+abstract class Base
 {
 
 }

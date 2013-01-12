@@ -14,7 +14,7 @@ use Xi2\Shared\Output\Base as OutputBase;
 /**
  * View base
  */
-class Base extends OutputBase implements Definition
+abstract class Base extends OutputBase implements Definition
 {
 
     /**
@@ -32,5 +32,12 @@ class Base extends OutputBase implements Definition
         throw new \Xi2\Core\Exception\Redirect();
 
     }
+
+    /**
+     * Handles shutdown
+     *
+     * @return bool
+     */
+    public abstract function shutdown();
 
 }

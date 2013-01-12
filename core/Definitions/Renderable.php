@@ -21,12 +21,4 @@ interface Renderable
      */
     public function render();
 
-
-    /**
-     * Handles shutdown
-     *
-     * @return mixed
-     */
-    public function shutdown();
-
 }
