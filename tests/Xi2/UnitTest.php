@@ -18,7 +18,7 @@ class UnitTest extends TestCase
      */
     public function testUnitTesting () {
 
-        $this->assertTrue( Kernel::get() instanceof KernelDefinition );
+        $this->assertTrue( Kernel::getInstance() instanceof KernelDefinition );
 
     }
 

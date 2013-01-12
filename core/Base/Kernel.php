@@ -19,7 +19,7 @@ abstract class Kernel
      *
      * @return Kernel
      */
-    public static function get()
+    public static function getInstance()
     {
 
         return self::$mySelf;
