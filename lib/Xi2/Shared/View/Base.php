@@ -17,4 +17,20 @@ use Xi2\Shared\Output\Base as OutputBase;
 class Base extends OutputBase implements Definition
 {
 
+    /**
+     * Handles redirects
+     *
+     * @param $method
+     * @param $view
+     * @param $module
+     * @throws \Xi2\Core\Exception\Redirect
+     */
+    public function redirect( $method=null, $view=null, $module=null )
+    {
+
+        echo "redirect initiated";
+        throw new \Xi2\Core\Exception\Redirect();
+
+    }
+
 }
