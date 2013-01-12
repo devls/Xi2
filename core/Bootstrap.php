@@ -73,7 +73,7 @@ namespace Xi2\Core {
             );
 
             if( $noBoot ) {
-                //This will cause auto-loaders to be loaded but nothing else.
+                //This will cause the bootstrap auto-loader to be loaded but nothing else.
                 return;
             } else {
                 self::$kernel = $kernel !== null ? $kernel : new Kernel();
