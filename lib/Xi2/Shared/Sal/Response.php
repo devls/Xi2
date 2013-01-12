@@ -6,7 +6,7 @@
  * Date: 11/01/13
  * Time: 21:47
  */
-namespace Xi2\Sal\Base;
+namespace Xi2\Shared\Sal;
 
 class Response
 {
@@ -26,7 +26,7 @@ class Response
      */
     public function status( $status = null )
     {
-        if( !is_bool( $status ) ) {
+        if( $status !== null && !is_bool( $status ) ) {
             throw new \InvalidArgumentException( 'Argument 1 expects type bool.' );
         }
 
