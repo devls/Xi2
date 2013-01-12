@@ -6,7 +6,7 @@
  * Date: 25/08/12
  * Time: 16:10
  */
-namespace Xi2\Sal\Base;
+namespace Xi2\Shared\Sal;
 
 class Base
 {
