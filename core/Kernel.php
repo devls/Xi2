@@ -33,9 +33,6 @@ namespace Xi2\Core {
         /* @var Definitions\UriHandler */
         private $uriHandler;
 
-        /* @var bool */
-        private static $booted = false;
-
 
         /**
          * Constructs this \Xi2\Core\Kernel.
@@ -50,15 +47,21 @@ namespace Xi2\Core {
                                      array $namespaces = array() )
         {
 
-            if( self::$booted ) {
+            if( !isset( self::$mySelf ) ) {
+                self::$mySelf = $this;
+            } else {
                 throw new Exception\General( "Cannot boot ". __NAMESPACE__.__CLASS__ ." more than once." );
             }
 
-            if( !isset( self::$mySelf ) ) {
-                self::$mySelf = $this;
-            }
+            try {
 
-            $this->uriHandler = Generic::eIsNull( $overrideUri, new UriHandler() );
+                $this->uriHandler = Generic::eIsNull( $overrideUri, new UriHandler() );
+
+            } catch( \Xi2\Core\Exception\General $e ) {
+                //This happens if we're on the command line.
+                $this->uriHandler = false;
+
+            }
 
             $this->paths = array_merge(
                 $customPaths,
@@ -83,9 +86,6 @@ namespace Xi2\Core {
          */
         public function boot()
         {
-
-            self::$booted = true;
-
             //An autoloader with greater powers.
             spl_autoload_register(
                 function( $class ) {
